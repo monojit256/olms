@@ -87,13 +87,13 @@ function olms_features_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'options_select',
       'weight' => 1,
     ),
   );
@@ -368,6 +368,7 @@ function olms_features_field_default_field_instances() {
   // Exported field_instance: 'node-book_issue-field_issue_date'
   $field_instances['node-book_issue-field_issue_date'] = array(
     'bundle' => 'book_issue',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -413,7 +414,7 @@ function olms_features_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_popup',
+      'type' => 'date_select',
       'weight' => -2,
     ),
   );
@@ -464,6 +465,7 @@ function olms_features_field_default_field_instances() {
   // Exported field_instance: 'node-book_issue-field_return_date'
   $field_instances['node-book_issue-field_return_date'] = array(
     'bundle' => 'book_issue',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -509,7 +511,7 @@ function olms_features_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_popup',
+      'type' => 'date_select',
       'weight' => -1,
     ),
   );
