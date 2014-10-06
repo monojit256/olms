@@ -50,8 +50,8 @@ function olms_features_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-book-field_catagory'
-  $field_instances['node-book-field_catagory'] = array(
+  // Exported field_instance: 'node-book-field_category'
+  $field_instances['node-book-field_category'] = array(
     'bundle' => 'book',
     'default_value' => NULL,
     'deleted' => 0,
@@ -59,9 +59,11 @@ function olms_features_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 5,
       ),
       'teaser' => array(
@@ -72,20 +74,26 @@ function olms_features_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_catagory',
-    'label' => 'catagory',
+    'field_name' => 'field_category',
+    'label' => 'category',
     'required' => 1,
     'settings' => array(
+      'behaviors' => array(
+        'taxonomy-index' => array(
+          'status' => TRUE,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
+      'active' => 1,
+      'module' => 'entityreference',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
+        'match_operator' => 'CONTAINS',
+        'path' => '',
         'size' => 60,
       ),
-      'type' => 'taxonomy_autocomplete',
+      'type' => 'entityreference_autocomplete',
       'weight' => 1,
     ),
   );
@@ -275,7 +283,7 @@ function olms_features_field_default_field_instances() {
   t('No_of_Books');
   t('Price');
   t('Rack_no');
-  t('catagory');
+  t('category');
 
   return $field_instances;
 }

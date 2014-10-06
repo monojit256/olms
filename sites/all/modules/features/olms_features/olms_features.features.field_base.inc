@@ -39,38 +39,42 @@ function olms_features_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_catagory'
-  $field_bases['field_catagory'] = array(
+  // Exported field_base: 'field_category'
+  $field_bases['field_category'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_catagory',
+    'field_name' => 'field_category',
     'foreign keys' => array(
-      'tid' => array(
+      'taxonomy_term_data' => array(
         'columns' => array(
-          'tid' => 'tid',
+          'target_id' => 'tid',
         ),
         'table' => 'taxonomy_term_data',
       ),
     ),
     'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
+      'target_id' => array(
+        0 => 'target_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'taxonomy',
+    'module' => 'entityreference',
     'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'vocabulary' => 'category',
-          'parent' => 0,
+      'handler' => 'base',
+      'handler_settings' => array(
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'category' => 'category',
         ),
       ),
+      'target_type' => 'taxonomy_term',
     ),
     'translatable' => 0,
-    'type' => 'taxonomy_term_reference',
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_isbn'

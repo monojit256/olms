@@ -13,7 +13,7 @@ function olms_features_user_default_roles() {
   // Exported role: librarian.
   $roles['librarian'] = array(
     'name' => 'librarian',
-    'weight' => 3,
+    'weight' => 2,
   );
 
   return $roles;
