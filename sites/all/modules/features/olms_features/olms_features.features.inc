@@ -5,6 +5,15 @@
  */
 
 /**
+ * Implements hook_ctools_plugin_api().
+ */
+function olms_features_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
+}
+
+/**
  * Implements hook_node_info().
  */
 function olms_features_node_info() {
@@ -15,6 +24,14 @@ function olms_features_node_info() {
       'description' => t('This Is Book Type Contant'),
       'has_title' => '1',
       'title_label' => t('Book Name'),
+      'help' => '',
+    ),
+    'book_issue' => array(
+      'name' => t('Book Issue'),
+      'base' => 'node_content',
+      'description' => t('Issued Books for library'),
+      'has_title' => '1',
+      'title_label' => t('title'),
       'help' => '',
     ),
   );
