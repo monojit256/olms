@@ -10,6 +10,13 @@
 function olms_features_default_roles_permissions() {
   $roles = array();
 
+  // Exported role: Member
+  $roles['Member'] = array(
+    'name' => 'Member',
+    'weight' => 3,
+    'permissions' => array(),
+  );
+
   // Exported role: librarian
   $roles['librarian'] = array(
     'name' => 'librarian',
