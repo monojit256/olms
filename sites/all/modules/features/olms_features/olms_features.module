@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the OLMS Features feature.
+ */
+
+include_once 'olms_features.features.inc';
