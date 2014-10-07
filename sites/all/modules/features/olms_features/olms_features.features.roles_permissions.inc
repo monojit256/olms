@@ -23,10 +23,15 @@ function olms_features_default_roles_permissions() {
     'weight' => 2,
     'permissions' => array(
       'create book content' => TRUE,
+      'create book_issue content' => TRUE,
       'delete any book content' => TRUE,
+      'delete any book_issue content' => TRUE,
       'delete own book content' => TRUE,
+      'delete own book_issue content' => TRUE,
       'edit any book content' => TRUE,
+      'edit any book_issue content' => TRUE,
       'edit own book content' => TRUE,
+      'edit own book_issue content' => TRUE,
     ),
   );
 
