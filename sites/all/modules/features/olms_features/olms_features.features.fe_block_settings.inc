@@ -41,6 +41,35 @@ function olms_features_default_fe_block_settings() {
     'visibility' => 1,
   );
 
+  $export['menu-menu-reports'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'menu-reports',
+    'module' => 'menu',
+    'node_types' => array(),
+    'pages' => 'book-master',
+    'roles' => array(
+      'administrator' => 3,
+      'librarian' => 5,
+    ),
+    'themes' => array(
+      'bartik' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
   $export['views-category_of_books-block'] = array(
     'cache' => -1,
     'custom' => 0,

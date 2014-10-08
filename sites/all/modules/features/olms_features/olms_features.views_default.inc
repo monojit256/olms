@@ -334,12 +334,6 @@ function olms_features_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Book Name */
   $handler->display->display_options['fields']['field_book_name']['id'] = 'field_book_name';
   $handler->display->display_options['fields']['field_book_name']['table'] = 'field_data_field_book_name';
@@ -386,6 +380,10 @@ function olms_features_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -405,13 +403,20 @@ function olms_features_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'book_issue' => 'book_issue',
   );
+  /* Filter criterion: Content: Return Date (field_return_date) */
+  $handler->display->display_options['filters']['field_return_date_value']['id'] = 'field_return_date_value';
+  $handler->display->display_options['filters']['field_return_date_value']['table'] = 'field_data_field_return_date';
+  $handler->display->display_options['filters']['field_return_date_value']['field'] = 'field_return_date_value';
+  $handler->display->display_options['filters']['field_return_date_value']['operator'] = 'empty';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'issued-books';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Issued Books';
+  $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $export['issued_books'] = $view;
 
   return $export;
