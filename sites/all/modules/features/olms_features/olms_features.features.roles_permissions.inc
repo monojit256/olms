@@ -13,15 +13,17 @@ function olms_features_default_roles_permissions() {
   // Exported role: Member
   $roles['Member'] = array(
     'name' => 'Member',
-    'weight' => 3,
+    'weight' => 2,
     'permissions' => array(),
   );
 
   // Exported role: librarian
   $roles['librarian'] = array(
     'name' => 'librarian',
-    'weight' => 2,
+    'weight' => 3,
     'permissions' => array(
+      'access user profiles' => TRUE,
+      'add terms in category' => TRUE,
       'create book content' => TRUE,
       'create book_issue content' => TRUE,
       'delete any book content' => TRUE,
