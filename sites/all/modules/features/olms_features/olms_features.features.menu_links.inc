@@ -84,6 +84,43 @@ function olms_features_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+  // Exported menu link: main-menu_my-account:myaccount
+  $menu_links['main-menu_my-account:myaccount'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'myaccount',
+    'router_path' => 'myaccount',
+    'link_title' => 'My Account',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_my-account:myaccount',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: main-menu_return-books-details:return-books-details
+  $menu_links['main-menu_return-books-details:return-books-details'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'return-books-details',
+    'router_path' => 'return-books-details',
+    'link_title' => 'Return Books Details',
+    'options' => array(
+      'identifier' => 'main-menu_return-books-details:return-books-details',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
   // Exported menu link: menu-master-menu_add-new-book:http://localhost/olms/node/add/book
   $menu_links['menu-master-menu_add-new-book:http://localhost/olms/node/add/book'] = array(
     'menu_name' => 'menu-master-menu',
@@ -164,6 +201,40 @@ function olms_features_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+  // Exported menu link: menu-reports_book-inventory:book-inventory
+  $menu_links['menu-reports_book-inventory:book-inventory'] = array(
+    'menu_name' => 'menu-reports',
+    'link_path' => 'book-inventory',
+    'router_path' => 'book-inventory',
+    'link_title' => 'Book Inventory',
+    'options' => array(
+      'identifier' => 'menu-reports_book-inventory:book-inventory',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
+  // Exported menu link: menu-reports_book-transaction:book-transaction
+  $menu_links['menu-reports_book-transaction:book-transaction'] = array(
+    'menu_name' => 'menu-reports',
+    'link_path' => 'book-transaction',
+    'router_path' => 'book-transaction',
+    'link_title' => 'Book Transaction',
+    'options' => array(
+      'identifier' => 'menu-reports_book-transaction:book-transaction',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
   // Exported menu link: menu-reports_issued-books:issued-books
   $menu_links['menu-reports_issued-books:issued-books'] = array(
     'menu_name' => 'menu-reports',
@@ -184,16 +255,38 @@ function olms_features_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+  // Exported menu link: menu-reports_pending-book-details:pending-book-details
+  $menu_links['menu-reports_pending-book-details:pending-book-details'] = array(
+    'menu_name' => 'menu-reports',
+    'link_path' => 'pending-book-details',
+    'router_path' => 'pending-book-details',
+    'link_title' => 'Pending Book Details',
+    'options' => array(
+      'identifier' => 'menu-reports_pending-book-details:pending-book-details',
+    ),
+    'module' => 'system',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Add New Book');
   t('Add New Category');
   t('Book Display');
+  t('Book Inventory');
   t('Book Issue');
   t('Book Master');
+  t('Book Transaction');
   t('Issued Books');
   t('Maintain Books');
   t('Maintain Category');
+  t('My Account');
+  t('Pending Book Details');
+  t('Return Books Details');
 
 
   return $menu_links;

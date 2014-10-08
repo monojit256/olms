@@ -236,6 +236,177 @@ function olms_features_views_default_views() {
   $export['book_display'] = $view;
 
   $view = new view();
+  $view->name = 'book_inventory';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Book Inventory';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Book Inventory';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  /* Field: Content: No_of_Books */
+  $handler->display->display_options['fields']['field_no_of_books']['id'] = 'field_no_of_books';
+  $handler->display->display_options['fields']['field_no_of_books']['table'] = 'field_data_field_no_of_books';
+  $handler->display->display_options['fields']['field_no_of_books']['field'] = 'field_no_of_books';
+  $handler->display->display_options['fields']['field_no_of_books']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Author */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Content: Price */
+  $handler->display->display_options['fields']['field_price']['id'] = 'field_price';
+  $handler->display->display_options['fields']['field_price']['table'] = 'field_data_field_price';
+  $handler->display->display_options['fields']['field_price']['field'] = 'field_price';
+  $handler->display->display_options['fields']['field_price']['settings'] = array(
+    'thousand_separator' => ' ',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'book' => 'book',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'book-inventory';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Book Inventory';
+  $handler->display->display_options['menu']['name'] = 'menu-reports';
+  $export['book_inventory'] = $view;
+
+  $view = new view();
+  $view->name = 'book_transaction';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Book Transaction';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Book Transaction';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Content: Book Name */
+  $handler->display->display_options['fields']['field_book_name_1']['id'] = 'field_book_name_1';
+  $handler->display->display_options['fields']['field_book_name_1']['table'] = 'field_data_field_book_name';
+  $handler->display->display_options['fields']['field_book_name_1']['field'] = 'field_book_name';
+  $handler->display->display_options['fields']['field_book_name_1']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Content: Fine Amount */
+  $handler->display->display_options['fields']['field_fine_amount']['id'] = 'field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['table'] = 'field_data_field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['field'] = 'field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['settings'] = array(
+    'thousand_separator' => ' ',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Issue Date */
+  $handler->display->display_options['fields']['field_issue_date']['id'] = 'field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['table'] = 'field_data_field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['field'] = 'field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Member */
+  $handler->display->display_options['fields']['field_member']['id'] = 'field_member';
+  $handler->display->display_options['fields']['field_member']['table'] = 'field_data_field_member';
+  $handler->display->display_options['fields']['field_member']['field'] = 'field_member';
+  $handler->display->display_options['fields']['field_member']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Content: Return Date */
+  $handler->display->display_options['fields']['field_return_date']['id'] = 'field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['table'] = 'field_data_field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['field'] = 'field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'book_issue' => 'book_issue',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'book-transaction';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Book Transaction';
+  $handler->display->display_options['menu']['name'] = 'menu-reports';
+  $export['book_transaction'] = $view;
+
+  $view = new view();
   $view->name = 'category_of_books';
   $view->description = '';
   $view->tag = 'default';
@@ -418,6 +589,341 @@ function olms_features_views_default_views() {
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $export['issued_books'] = $view;
+
+  $view = new view();
+  $view->name = 'my_history';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'My History';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'My History';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    4 => '4',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_book_name' => 'field_book_name',
+    'field_issue_date' => 'field_issue_date',
+    'field_return_date' => 'field_return_date',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_book_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_issue_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_return_date' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_member_target_id']['id'] = 'field_member_target_id';
+  $handler->display->display_options['relationships']['field_member_target_id']['table'] = 'field_data_field_member';
+  $handler->display->display_options['relationships']['field_member_target_id']['field'] = 'field_member_target_id';
+  /* Field: Content: Book Name */
+  $handler->display->display_options['fields']['field_book_name']['id'] = 'field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['table'] = 'field_data_field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['field'] = 'field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Content: Issue Date */
+  $handler->display->display_options['fields']['field_issue_date']['id'] = 'field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['table'] = 'field_data_field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['field'] = 'field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Return Date */
+  $handler->display->display_options['fields']['field_return_date']['id'] = 'field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['table'] = 'field_data_field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['field'] = 'field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'book_issue' => 'book_issue',
+  );
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['relationship'] = 'field_member_target_id';
+  $handler->display->display_options['filters']['uid_current']['value'] = '1';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $export['my_history'] = $view;
+
+  $view = new view();
+  $view->name = 'pending_book_details';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Pending Book Details';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Pending Book Details';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Content: Member */
+  $handler->display->display_options['fields']['field_member']['id'] = 'field_member';
+  $handler->display->display_options['fields']['field_member']['table'] = 'field_data_field_member';
+  $handler->display->display_options['fields']['field_member']['field'] = 'field_member';
+  $handler->display->display_options['fields']['field_member']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Content: Book Name */
+  $handler->display->display_options['fields']['field_book_name']['id'] = 'field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['table'] = 'field_data_field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['field'] = 'field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Content: Issue Date */
+  $handler->display->display_options['fields']['field_issue_date']['id'] = 'field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['table'] = 'field_data_field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['field'] = 'field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Return Date */
+  $handler->display->display_options['fields']['field_return_date']['id'] = 'field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['table'] = 'field_data_field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['field'] = 'field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Fine Amount */
+  $handler->display->display_options['fields']['field_fine_amount']['id'] = 'field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['table'] = 'field_data_field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['field'] = 'field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['settings'] = array(
+    'thousand_separator' => ' ',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'book_issue' => 'book_issue',
+  );
+  /* Filter criterion: Content: Return Date (field_return_date) */
+  $handler->display->display_options['filters']['field_return_date_value']['id'] = 'field_return_date_value';
+  $handler->display->display_options['filters']['field_return_date_value']['table'] = 'field_data_field_return_date';
+  $handler->display->display_options['filters']['field_return_date_value']['field'] = 'field_return_date_value';
+  $handler->display->display_options['filters']['field_return_date_value']['operator'] = 'empty';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'pending-book-details';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Pending Book Details';
+  $handler->display->display_options['menu']['name'] = 'menu-reports';
+  $export['pending_book_details'] = $view;
+
+  $view = new view();
+  $view->name = 'return_books_details';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Return Books Details';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Return Books Details';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    5 => '5',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Book Name */
+  $handler->display->display_options['fields']['field_book_name']['id'] = 'field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['table'] = 'field_data_field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['field'] = 'field_book_name';
+  $handler->display->display_options['fields']['field_book_name']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Content: Fine Amount */
+  $handler->display->display_options['fields']['field_fine_amount']['id'] = 'field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['table'] = 'field_data_field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['field'] = 'field_fine_amount';
+  $handler->display->display_options['fields']['field_fine_amount']['settings'] = array(
+    'thousand_separator' => ' ',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Issue Date */
+  $handler->display->display_options['fields']['field_issue_date']['id'] = 'field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['table'] = 'field_data_field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['field'] = 'field_issue_date';
+  $handler->display->display_options['fields']['field_issue_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Member */
+  $handler->display->display_options['fields']['field_member']['id'] = 'field_member';
+  $handler->display->display_options['fields']['field_member']['table'] = 'field_data_field_member';
+  $handler->display->display_options['fields']['field_member']['field'] = 'field_member';
+  $handler->display->display_options['fields']['field_member']['settings'] = array(
+    'link' => 0,
+  );
+  /* Field: Content: Return Date */
+  $handler->display->display_options['fields']['field_return_date']['id'] = 'field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['table'] = 'field_data_field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['field'] = 'field_return_date';
+  $handler->display->display_options['fields']['field_return_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'book_issue' => 'book_issue',
+  );
+  /* Filter criterion: Content: Return Date (field_return_date) */
+  $handler->display->display_options['filters']['field_return_date_value']['id'] = 'field_return_date_value';
+  $handler->display->display_options['filters']['field_return_date_value']['table'] = 'field_data_field_return_date';
+  $handler->display->display_options['filters']['field_return_date_value']['field'] = 'field_return_date_value';
+  $handler->display->display_options['filters']['field_return_date_value']['operator'] = 'empty';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'return-books-details';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Return Books Details';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $export['return_books_details'] = $view;
 
   return $export;
 }
