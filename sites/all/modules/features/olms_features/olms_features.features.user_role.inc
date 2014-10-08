@@ -13,13 +13,13 @@ function olms_features_user_default_roles() {
   // Exported role: Member.
   $roles['Member'] = array(
     'name' => 'Member',
-    'weight' => 3,
+    'weight' => 2,
   );
 
   // Exported role: librarian.
   $roles['librarian'] = array(
     'name' => 'librarian',
-    'weight' => 2,
+    'weight' => 3,
   );
 
   return $roles;
