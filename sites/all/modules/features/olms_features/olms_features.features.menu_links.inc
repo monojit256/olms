@@ -24,7 +24,7 @@ function olms_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: main-menu_book-issue:node/add/book-issue
@@ -44,7 +44,7 @@ function olms_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -47,
     'customized' => 1,
   );
   // Exported menu link: main-menu_book-master:book-master
@@ -64,7 +64,7 @@ function olms_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 1,
+    'weight' => -49,
     'customized' => 1,
   );
   // Exported menu link: main-menu_issued-books:issued-books
@@ -105,7 +105,7 @@ function olms_features_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: menu-master-menu_add-new-book:http://localhost/olms/node/add/book
@@ -148,6 +148,46 @@ function olms_features_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+  // Exported menu link: menu-master-menu_maintain-books:book-display
+  $menu_links['menu-master-menu_maintain-books:book-display'] = array(
+    'menu_name' => 'menu-master-menu',
+    'link_path' => 'book-display',
+    'router_path' => 'book-display',
+    'link_title' => 'Maintain Books',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-master-menu_maintain-books:book-display',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-master-menu_maintain-category:category-display
+  $menu_links['menu-master-menu_maintain-category:category-display'] = array(
+    'menu_name' => 'menu-master-menu',
+    'link_path' => 'category-display',
+    'router_path' => 'category-display',
+    'link_title' => 'Maintain Category',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-master-menu_maintain-category:category-display',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Add New Book');
@@ -156,6 +196,8 @@ function olms_features_menu_default_menu_links() {
   t('Book Issue');
   t('Book Master');
   t('Issued Books');
+  t('Maintain Books');
+  t('Maintain Category');
   t('Reports');
 
 

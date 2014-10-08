@@ -308,13 +308,13 @@ function olms_features_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'options_select',
       'weight' => -4,
     ),
   );
@@ -348,7 +348,7 @@ function olms_features_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_fine_amount',
     'label' => 'Fine Amount',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'max' => '',
       'min' => 0,
@@ -414,7 +414,7 @@ function olms_features_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_select',
+      'type' => 'date_popup',
       'weight' => -2,
     ),
   );
@@ -451,13 +451,13 @@ function olms_features_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'options',
       'settings' => array(
         'match_operator' => 'CONTAINS',
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'options_select',
       'weight' => -3,
     ),
   );
@@ -492,9 +492,9 @@ function olms_features_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_return_date',
     'label' => 'Return Date',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -511,7 +511,7 @@ function olms_features_field_default_field_instances() {
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
-      'type' => 'date_select',
+      'type' => 'date_popup',
       'weight' => -1,
     ),
   );

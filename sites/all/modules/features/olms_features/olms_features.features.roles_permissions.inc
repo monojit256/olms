@@ -22,6 +22,8 @@ function olms_features_default_roles_permissions() {
     'name' => 'librarian',
     'weight' => 3,
     'permissions' => array(
+      'access user profiles' => TRUE,
+      'add terms in category' => TRUE,
       'create book content' => TRUE,
       'create book_issue content' => TRUE,
       'delete any book content' => TRUE,

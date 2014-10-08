@@ -18,15 +18,15 @@ function olms_features_default_fe_block_settings() {
     'delta' => 'menu-master-menu',
     'module' => 'menu',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'book-master',
     'roles' => array(
       'administrator' => 3,
       'librarian' => 5,
     ),
     'themes' => array(
       'bartik' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'sidebar_first',
+        'status' => 1,
         'theme' => 'bartik',
         'weight' => 0,
       ),
@@ -38,7 +38,7 @@ function olms_features_default_fe_block_settings() {
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['views-category_of_books-block'] = array(
