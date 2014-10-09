@@ -1,0 +1,37 @@
+<?php
+/*
+function olms_custom_form_node_form_alter(&$form, &$form_state, $form_id) 
+{
+	//dpm($form); 
+	unset($form['field_issue_date']);
+	drupal_set_message("This is base form");
+}
+
+function olms_custom_form_alter(&$form, &$form_state, $form_id) 
+{
+	//dpm($form); 
+	unset($form['field_issue_date']);
+	drupal_set_message("This is general form");
+}*/	
+
+function olms_custom_form_book_issue_node_form_alter(&$form, &$form_state, $form_id) 
+{
+	
+	//$form['field_fine_amount']['und']['#size'] = 60;
+	unset($form['field_expected_return_date']);
+	//dpm($form);
+}
+function olms_custom_node_validate($node, $form, &$form_state) {
+  if($form['#form_id']=="book_issue_node_form")
+  {
+  $issue_date = $form['field_issue_date']['und'][0]['#value']['value']['date'];
+  //$test=explode("/", $issue_date);
+  //$date=$test[1]+7;
+  //$full_date=test[0]
+  $show_date=strtotime(date("Y-m-d", strtotime($issue_date)) . "+7 days");
+$show_date1=date('Y-m-d', $show_date);
+  //drupal_set_message($show_date1);
+$form_state['values']['field_expected_return_date']['und'][0]['value'] = $show_date1;
+//dpm($form);
+}
+}

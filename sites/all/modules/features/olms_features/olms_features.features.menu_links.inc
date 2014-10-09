@@ -17,34 +17,17 @@ function olms_features_menu_default_menu_links() {
     'router_path' => 'book-display',
     'link_title' => 'Book Display',
     'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
       'identifier' => 'main-menu_book-display:book-display',
     ),
-    'module' => 'system',
+    'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -48,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_book-issue:node/add/book-issue
-  $menu_links['main-menu_book-issue:node/add/book-issue'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/add/book-issue',
-    'router_path' => 'node/add/book-issue',
-    'link_title' => 'Book Issue',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Issued Books for library',
-      ),
-      'identifier' => 'main-menu_book-issue:node/add/book-issue',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
     'customized' => 1,
   );
   // Exported menu link: main-menu_book-master:book-master
@@ -59,7 +42,7 @@ function olms_features_menu_default_menu_links() {
       ),
       'identifier' => 'main-menu_book-master:book-master',
     ),
-    'module' => 'system',
+    'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
@@ -67,34 +50,74 @@ function olms_features_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_issued-books:issued-books
-  $menu_links['main-menu_issued-books:issued-books'] = array(
+  // Exported menu link: main-menu_book-return:issued-books
+  $menu_links['main-menu_book-return:issued-books'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'issued-books',
     'router_path' => 'issued-books',
-    'link_title' => 'Issued Books',
+    'link_title' => 'Book Return',
     'options' => array(
-      'identifier' => 'main-menu_issued-books:issued-books',
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_book-return:issued-books',
     ),
-    'module' => 'system',
-    'hidden' => 1,
+    'module' => 'menu',
+    'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_my-account:myaccount
-  $menu_links['main-menu_my-account:myaccount'] = array(
+  // Exported menu link: main-menu_home:<front>
+  $menu_links['main-menu_home:<front>'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'myaccount',
-    'router_path' => 'myaccount',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Home',
+    'options' => array(
+      'identifier' => 'main-menu_home:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+  );
+  // Exported menu link: main-menu_issue-books:node/add/book-issue
+  $menu_links['main-menu_issue-books:node/add/book-issue'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/add/book-issue',
+    'router_path' => 'node/add/book-issue',
+    'link_title' => 'Issue Books',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'main-menu_issue-books:node/add/book-issue',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 1,
+  );
+  // Exported menu link: main-menu_my-account:my-account
+  $menu_links['main-menu_my-account:my-account'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'my-account',
+    'router_path' => 'my-account',
     'link_title' => 'My Account',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_my-account:myaccount',
+      'identifier' => 'main-menu_my-account:my-account',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -104,38 +127,21 @@ function olms_features_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_return-books-details:return-books-details
-  $menu_links['main-menu_return-books-details:return-books-details'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'return-books-details',
-    'router_path' => 'return-books-details',
-    'link_title' => 'Return Books Details',
-    'options' => array(
-      'identifier' => 'main-menu_return-books-details:return-books-details',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-  );
-  // Exported menu link: menu-master-menu_add-new-book:http://localhost/olms/node/add/book
-  $menu_links['menu-master-menu_add-new-book:http://localhost/olms/node/add/book'] = array(
+  // Exported menu link: menu-master-menu_add-new-book:node/add/book
+  $menu_links['menu-master-menu_add-new-book:node/add/book'] = array(
     'menu_name' => 'menu-master-menu',
-    'link_path' => 'http://localhost/olms/node/add/book',
-    'router_path' => '',
+    'link_path' => 'node/add/book',
+    'router_path' => 'node/add/book',
     'link_title' => 'Add New Book',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-master-menu_add-new-book:http://localhost/olms/node/add/book',
+      'identifier' => 'menu-master-menu_add-new-book:node/add/book',
     ),
     'module' => 'menu',
     'hidden' => 0,
-    'external' => 1,
+    'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
@@ -278,15 +284,16 @@ function olms_features_menu_default_menu_links() {
   t('Add New Category');
   t('Book Display');
   t('Book Inventory');
-  t('Book Issue');
   t('Book Master');
+  t('Book Return');
   t('Book Transaction');
+  t('Home');
+  t('Issue Books');
   t('Issued Books');
   t('Maintain Books');
   t('Maintain Category');
   t('My Account');
   t('Pending Book Details');
-  t('Return Books Details');
 
 
   return $menu_links;
