@@ -120,6 +120,36 @@ function olms_features_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_expected_return_date'
+  $field_bases['field_expected_return_date'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_expected_return_date',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => '',
+      'todate' => '',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
+  );
+
   // Exported field_base: 'field_fine_amount'
   $field_bases['field_fine_amount'] = array(
     'active' => 1,
@@ -192,7 +222,7 @@ function olms_features_field_default_field_bases() {
         'year' => 'year',
       ),
       'timezone_db' => '',
-      'todate' => 'required',
+      'todate' => '',
       'tz_handling' => 'none',
     ),
     'translatable' => 0,

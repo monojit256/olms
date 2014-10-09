@@ -178,6 +178,9 @@ function olms_features_strongarm() {
         'title' => array(
           'weight' => '-5',
         ),
+        'path' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),
@@ -259,6 +262,90 @@ function olms_features_strongarm() {
   $strongarm->name = 'node_submitted_book_issue';
   $strongarm->value = 0;
   $export['node_submitted_book_issue'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_blog_pattern';
+  $strongarm->value = 'blogs/[user:name]';
+  $export['pathauto_blog_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_forum_pattern';
+  $strongarm->value = '[term:vocabulary]/[term:name]';
+  $export['pathauto_forum_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_article_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_article_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_book_issue_pattern';
+  $strongarm->value = 'issue/[current-page:title]';
+  $export['pathauto_node_book_issue_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_book_pattern';
+  $strongarm->value = 'books/[node:field_isbn]';
+  $export['pathauto_node_book_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_page_pattern';
+  $strongarm->value = 'page/[current-page:title]';
+  $export['pathauto_node_page_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_pattern';
+  $strongarm->value = 'content/[node:title]';
+  $export['pathauto_node_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_punctuation_hyphen';
+  $strongarm->value = 1;
+  $export['pathauto_punctuation_hyphen'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_category_pattern';
+  $strongarm->value = 'category/[term:name]';
+  $export['pathauto_taxonomy_term_category_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_pattern';
+  $strongarm->value = '[term:vocabulary]/[term:name]';
+  $export['pathauto_taxonomy_term_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_tags_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_tags_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_user_pattern';
+  $strongarm->value = '[user:roles:last]/[user:name]';
+  $export['pathauto_user_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
