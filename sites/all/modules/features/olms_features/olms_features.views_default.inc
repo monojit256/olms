@@ -802,6 +802,12 @@ function olms_features_views_default_views() {
   $handler->display->display_options['filters']['field_return_date_value']['table'] = 'field_data_field_return_date';
   $handler->display->display_options['filters']['field_return_date_value']['field'] = 'field_return_date_value';
   $handler->display->display_options['filters']['field_return_date_value']['operator'] = 'empty';
+  /* Filter criterion: Content: Issue Date - end date (field_issue_date:value2) */
+  $handler->display->display_options['filters']['field_issue_date_value2']['id'] = 'field_issue_date_value2';
+  $handler->display->display_options['filters']['field_issue_date_value2']['table'] = 'field_data_field_issue_date';
+  $handler->display->display_options['filters']['field_issue_date_value2']['field'] = 'field_issue_date_value2';
+  $handler->display->display_options['filters']['field_issue_date_value2']['operator'] = '<';
+  $handler->display->display_options['filters']['field_issue_date_value2']['default_date'] = 'now';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
