@@ -22,16 +22,55 @@ function olms_custom_form_book_issue_node_form_alter(&$form, &$form_state, $form
 	//dpm($form);
 }
 function olms_custom_node_validate($node, $form, &$form_state) {
-  if($form['#form_id']=="book_issue_node_form")
+  if($form['#form_id'] == "book_issue_node_form")
   {
-  $issue_date = $form['field_issue_date']['und'][0]['#value']['value']['date'];
-  //$test=explode("/", $issue_date);
-  //$date=$test[1]+7;
-  //$full_date=test[0]
-  $show_date=strtotime(date("Y-m-d", strtotime($issue_date)) . "+7 days");
-$show_date1=date('Y-m-d', $show_date);
-  //drupal_set_message($show_date1);
-$form_state['values']['field_expected_return_date']['und'][0]['value'] = $show_date1;
-//dpm($form);
+  	   $node_id=$form_state['values']['field_book_name']['und'][0]['target_id'];
+
+	   $nod=node_load($node_id);
+	   $t_id=$nod->field_category['und'][0]['target_id'];
+	   $nod1=taxonomy_term_load($t_id);
+	   $term=$nod1->name;
+	   if($term=="Fiction")
+	   {
+		  $issue_date = $form['field_issue_date']['und'][0]['#value']['value']['date'];
+		  //$test=explode("/", $issue_date);
+		  //$date=$test[1]+7;
+		  //$full_date=test[0]
+		  	$show_date=strtotime(date("Y-m-d", strtotime($issue_date)) . "+7 days");
+			$show_date1=date('Y-m-d', $show_date);
+			  //drupal_set_message($show_date1);
+			$form_state['values']['field_expected_return_date']['und'][0]['value'] = $show_date1;
+			//$get_item=$form['field_book_name']['und']['#options'][2];
+
+	   }
+	   else
+	   {
+	   		$issue_date = $form['field_issue_date']['und'][0]['#value']['value']['date'];
+		  //$test=explode("/", $issue_date);
+		  //$date=$test[1]+7;
+		  //$full_date=test[0]
+		  	$show_date=strtotime(date("Y-m-d", strtotime($issue_date)) . "+14 days");
+			$show_date1=date('Y-m-d', $show_date);
+			  //drupal_set_message($show_date1);
+			$form_state['values']['field_expected_return_date']['und'][0]['value'] = $show_date1;
+	   }
+	dpm($nod1);
+   }
 }
+function olms_custom_node_insert($node)
+{
+	//drupal_set_message($node->nid);
+	//$nod_id=$node->nid;
+	/*$query = new EntityFieldQuery(); $query->entityCondition('entity_type', 'node') ->entityCondition('bundle', 'book_issue') ->propertyCondition('status', 1) ->fieldCondition('field_book_name', 'entity_id', '$nod_id', '=');
+	$result = $query->execute(); 
+	/*if (isset($result['node'])) 
+	{ 
+	$book= array_shift($result['node']); //$
+	$news_items = entity_load('node', $book); 
+	$node_id=$news_items->field_field_book['und'][0]['target_id']; 
+	drupal_set_message($node_id); 
+    }*/
+	//dpm($node);
 }
+
+

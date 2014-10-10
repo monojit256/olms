@@ -9,6 +9,49 @@
  */
 function olms_features_default_rules_configuration() {
   $items = array();
+  $items['rules_decrease_quantity'] = entity_import('rules_config', '{ "rules_decrease_quantity" : {
+      "LABEL" : "Decrease Quantity",
+      "PLUGIN" : "rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "rules_conditional" ],
+      "USES VARIABLES" : {
+        "book" : { "label" : "Book", "type" : "node" },
+        "quantity" : { "label" : "Book Quantity", "type" : "integer" }
+      },
+      "IF" : [
+        { "entity_has_field" : { "entity" : [ "book" ], "field" : "field_no_of_books" } }
+      ],
+      "DO" : [
+        { "CONDITIONAL" : [
+            {
+              "IF" : { "data_is" : {
+                  "data" : [ "book:field-no-of-books" ],
+                  "op" : "\\u003E",
+                  "value" : [ "quantity" ]
+                }
+              },
+              "DO" : [
+                { "data_calc" : {
+                    "USING" : {
+                      "input_1" : [ "book:field-no-of-books" ],
+                      "op" : "-",
+                      "input_2" : [ "quantity" ]
+                    },
+                    "PROVIDE" : { "result" : { "result" : "Calculation result" } }
+                  }
+                },
+                { "data_set" : { "data" : [ "book:field-no-of-books" ], "value" : [ "result" ] } }
+              ]
+            },
+            { "ELSE" : [
+                { "drupal_message" : { "message" : "Incorrect Input", "type" : "error" } }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }');
   $items['rules_testcomponent'] = entity_import('rules_config', '{ "rules_testcomponent" : {
       "LABEL" : "TestComponent",
       "PLUGIN" : "rule",

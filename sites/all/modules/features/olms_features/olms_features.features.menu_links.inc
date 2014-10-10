@@ -167,6 +167,26 @@ function olms_features_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+  // Exported menu link: menu-master-menu_book-quanity--:decrease-book-quantity
+  $menu_links['menu-master-menu_book-quanity--:decrease-book-quantity'] = array(
+    'menu_name' => 'menu-master-menu',
+    'link_path' => 'decrease-book-quantity',
+    'router_path' => 'decrease-book-quantity',
+    'link_title' => 'Book Quanity (-)',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-master-menu_book-quanity--:decrease-book-quantity',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
   // Exported menu link: menu-master-menu_maintain-books:book-display
   $menu_links['menu-master-menu_maintain-books:book-display'] = array(
     'menu_name' => 'menu-master-menu',
@@ -285,6 +305,7 @@ function olms_features_menu_default_menu_links() {
   t('Book Display');
   t('Book Inventory');
   t('Book Master');
+  t('Book Quanity (-)');
   t('Book Return');
   t('Book Transaction');
   t('Home');
