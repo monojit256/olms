@@ -1,76 +1,255 @@
 <?php
 /*
-function olms_custom_form_node_form_alter(&$form, &$form_state, $form_id) 
+function olms_custom_form_node_form_alter(&$form, &$form_state, $form_id)
 {
-	//dpm($form); 
-	unset($form['field_issue_date']);
-	drupal_set_message("This is base form");
+//dpm($form);
+unset($form['field_issue_date']);
+drupal_set_message("This is base form");
 }
 
-function olms_custom_form_alter(&$form, &$form_state, $form_id) 
+function olms_custom_form_alter(&$form, &$form_state, $form_id)
 {
-	//dpm($form); 
-	unset($form['field_issue_date']);
-	drupal_set_message("This is general form");
-}*/	
+//dpm($form);
+unset($form['field_issue_date']);
+drupal_set_message("This is general form");
+}*/
 
-function olms_custom_form_book_issue_node_form_alter(&$form, &$form_state, $form_id) 
+function olms_custom_form_book_issue_node_form_alter(&$form, &$form_state,
+$form_id)
 {
-	
-	//$form['field_fine_amount']['und']['#size'] = 60;
-	unset($form['field_expected_return_date']);
-	//dpm($form);
+
+//$form['field_fine_amount']['und']['#size'] = 60;
+unset($form['field_expected_return_date']);
+//dpm($form);
 }
 function olms_custom_node_validate($node, $form, &$form_state) {
-  if($form['#form_id'] == "book_issue_node_form")
-  {
-  	   $node_id=$form_state['values']['field_book_name']['und'][0]['target_id'];
+if($form['#form_id'] == "book_issue_node_form")
+{
+$node_id=$form_state['values']['field_book_name']['und'][0]['target_id'];
 
-	   $nod=node_load($node_id);
-	   $t_id=$nod->field_category['und'][0]['target_id'];
-	   $nod1=taxonomy_term_load($t_id);
-	   $term=$nod1->name;
-	   if($term=="Fiction")
-	   {
-		  $issue_date = $form['field_issue_date']['und'][0]['#value']['value']['date'];
-		  //$test=explode("/", $issue_date);
-		  //$date=$test[1]+7;
-		  //$full_date=test[0]
-		  	$show_date=strtotime(date("Y-m-d", strtotime($issue_date)) . "+7 days");
-			$show_date1=date('Y-m-d', $show_date);
-			  //drupal_set_message($show_date1);
-			$form_state['values']['field_expected_return_date']['und'][0]['value'] = $show_date1;
-			//$get_item=$form['field_book_name']['und']['#options'][2];
+$nod=node_load($node_id);
+$t_id=$nod->field_category['und'][0]['target_id'];
+$nod1=taxonomy_term_load($t_id);
+$term=$nod1->name;
+if($term=="Fiction")
+{
+$issue_date =
+$form['field_issue_date']['und'][0]['#value']['value']['date'];
+//$test=explode("/", $issue_date);
+//$date=$test[1]+7;
+//$full_date=test[0]
+$show_date=strtotime(date("Y-m-d", strtotime($issue_date)) . "+7 days");
+$show_date1=date('Y-m-d', $show_date);
+//drupal_set_message($show_date1);
+$form_state['values']['field_expected_return_date']['und'][0]['value']
+= $show_date1;
+//$get_item=$form['field_book_name']['und']['#options'][2];
 
-	   }
-	   else
-	   {
-	   		$issue_date = $form['field_issue_date']['und'][0]['#value']['value']['date'];
-		  //$test=explode("/", $issue_date);
-		  //$date=$test[1]+7;
-		  //$full_date=test[0]
-		  	$show_date=strtotime(date("Y-m-d", strtotime($issue_date)) . "+14 days");
-			$show_date1=date('Y-m-d', $show_date);
-			  //drupal_set_message($show_date1);
-			$form_state['values']['field_expected_return_date']['und'][0]['value'] = $show_date1;
-	   }
-	dpm($nod1);
-   }
 }
+else
+{
+$issue_date =
+$form['field_issue_date']['und'][0]['#value']['value']['date'];
+//$test=explode("/", $issue_date);
+//$date=$test[1]+7;
+//$full_date=test[0]
+$show_date=strtotime(date("Y-m-d", strtotime($issue_date)) . "+14
+days");
+$show_date1=date('Y-m-d', $show_date);
+//drupal_set_message($show_date1);
+$form_state['values']['field_expected_return_date']['und'][0]['value']
+= $show_date1;
+}
+dpm($nod1);
+}
+}
+
+function olms_custom_menu()
+{
+$item=array();
+$item['olms/increse_book_quantity']=array(
+'title' => 'Book Quantity(+)',
+'description' => 'Book Quantity Increse',
+'page callback' => 'drupal_get_form',
+'page arguments' => array('increse_quantity'),
+'access callback' => TRUE
+);
+$item['olms/return_book']=array(
+	'title' => 'Return Books',
+	'description' => 'Reccive return Books',
+	'page callback' => 'drupal_get_form',
+	'page arguments' => array('return_book'),
+	'access callback' => TRUE
+
+	);
+return $item;
+
+}
+function increse_quantity($form,&$form_state)
+{
+//dpm($form);
+$form['book_name']=array(
+'#type' => 'textfield',
+'#title' => 'Enter Book Name',
+'#required' => TRUE
+);
+$form['book_quantity']=array(
+'#type' => 'textfield',
+'#title' => 'Enter book Qunatity',
+'#required' => TRUE
+);
+$form['submit_button'] = array(
+'#type' => 'submit',
+'#value' => t('Click Here!')
+);
+//dpm($form);
+return $form;
+
+}
+function increse_quantity_submit($form, &$form_state) {
+//drupal_set_message('sdfsdfsd');
+
+$book_name = $form_state['values']['book_name'];
+$book_quantity = $form_state['values']['book_quantity'];
+$query = new EntityFieldQuery();
+
+$query->entityCondition('entity_type', 'node')
+->entityCondition('bundle', 'book')
+->propertyCondition('status', 1)
+->propertyCondition('title', $book_name);
+
+$result = $query->execute();
+//dpm($result);
+
+if (isset($result['node'])) {
+$book_nids = array_keys($result['node']);
+$book_entities = entity_load('node', $book_nids);
+//dpm($book_nids);
+//dpm($book_entities);
+$book_node = array_shift($book_entities);
+//dpm($book_node);
+//drupal_set_message($news_items);
+//$book_old_quan=$book_item[$book_nid[0]]->field_no_of_books['und'][0]['value'];
+//$total_quntity=$book_old_quan + $book_quantity;
+$old_qty = $book_node->field_no_of_books['und'][0]['value'];
+$total_quntity=$old_qty + $book_quantity;
+$book_node->field_no_of_books['und'][0]['value']=$total_quntity;
+entity_save('node', $book_node);
+//drupal_set_message($old_qty);
+///dpm($total_quntity);*/
+}
+
+}
+function return_book($form,&$form_state)
+{
+	$form['book_name']=array(
+			'#type' => 'textfield',
+			'#required' => TRUE,
+			'#title' => 'Enter book Name'
+		);
+	$form['borrower_name']=array(
+			'#type' => 'textfield',
+			'#title' => 'Enter Borrower Name',
+			'#required' => TRUE
+		);
+	$form['return_date']=array(
+			'#type' => 'date',
+			'#title' => 'Enter Return Date',
+			'#required' => TRUE
+		);
+	$form['submit_button']=array(
+			'#type' => 'submit',
+			'#value' => t('Return')
+		);
+	return $form;
+}
+function return_book_submit($form,&$form_state)
+{
+	$book_name=$form_state['values']['book_name'];
+	$borrower_name=$form_state['values']['borrower_name'];
+	$return_date=$form_state['values']['return_date'];
+	$full_date=$return_date['year']."-".$return_date['month']."-".$return_date['day']." 00:00:00";
+	//entity Querry Type Object declare
+	$query=new EntityFieldQuery();
+
+	//entity Querry conditions declare
+	$query->entityCondition('entity_type','node')
+	->entityCondition('bundle','book')
+	->propertyCondition('status', 1)
+	->propertyCondition('title', $book_name);
+	//entity Querry Execute
+
+	$result = $query->execute();
+	//check result are return a node type or not
+	if(isset($result['node']))
+	{
+		
+		$node_ids = array_keys($result['node']);//taking book nids using array_keys function
+
+		$query2 = new EntityFieldQuery();//entity Querry Type Object declare to fetch Book Issue Nid
+
+		//entity Querry conditions declare
+		$query2->entityCondition('entity_type','node')
+		->entityCondition('bundle','book_issue')
+		->propertyCondition('status',1)
+		->fieldCondition('field_book_name','target_id',$node_ids[0],'=');
+
+		$result2 = $query2->execute();//entity Querry Execute
+
+		$book_issue_ids = array_keys($result2['node']);//taking Book_issue nids using array_keys function
+
+		$book_issue_entites = entity_load('node',$book_issue_ids);//load book_issue bundle by nid
+
+		$book_issue_entites[$book_issue_ids[0]]->field_return_date['und']['0']['value'] = $full_date;//assign a new value to field_return_date (field)
+
+		entity_save('node',$book_issue_entites[$book_issue_ids[0]]);//here we save the modified book_issued entity
+
+
+		/*------- Now We Increse Book Qunatity--------*/
+
+		$book_entities = entity_load('node',$node_ids);//we load book type node by nid
+		
+		$new_quan=$book_entities[$node_ids[0]]->field_no_of_books['und'][0]['value'] + 1; //here we add 1 with old book quantity and store a new book quantity in $new_quan
+
+		$book_entities[$node_ids[0]]->field_no_of_books['und'][0]['value']=$new_quan;
+		// here we insert new quantity into field_no_of_books
+
+		entity_save('node',$book_entities[$node_ids[0]]);//here we save the modified book entity
+		dpm($book_entities);
+	}
+
+
+}
+function olms_custom_menu_alter(&$items) {
+//$items['return_book']['menu_name'] = 'menu-master-menu';
+
+
+return $items;
+}
+
 function olms_custom_node_insert($node)
 {
-	//drupal_set_message($node->nid);
-	//$nod_id=$node->nid;
-	/*$query = new EntityFieldQuery(); $query->entityCondition('entity_type', 'node') ->entityCondition('bundle', 'book_issue') ->propertyCondition('status', 1) ->fieldCondition('field_book_name', 'entity_id', '$nod_id', '=');
-	$result = $query->execute(); 
-	/*if (isset($result['node'])) 
-	{ 
-	$book= array_shift($result['node']); //$
-	$news_items = entity_load('node', $book); 
-	$node_id=$news_items->field_field_book['und'][0]['target_id']; 
-	drupal_set_message($node_id); 
-    }*/
-	//dpm($node);
+//drupal_set_message($node->nid);
+//$nod_id=$node->nid;
+/*$query = new EntityFieldQuery(); $query->entityCondition('entity_type',
+'node') ->entityCondition('bundle', 'book_issue')
+->propertyCondition('status', 1) ->fieldCondition('field_book_name',
+'entity_id', '$nod_id', '=');
+$result = $query->execute();
+/*if (isset($result['node']))
+{
+$book= array_shift($result['node']); //$
+$news_items = entity_load('node', $book);
+$node_id=$news_items->field_field_book['und'][0]['target_id'];
+drupal_set_message($node_id);
+}*/
+//dpm($node);
 }
 
+/*function increse_quantity_validate($form, &$form_state) {
 
+//if($form_state['values']['book_quantity'] == 0)
+//{
+drupal_set_message("erter");
+//	}
+}*/
