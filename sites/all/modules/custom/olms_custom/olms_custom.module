@@ -83,8 +83,13 @@ function olms_custom_menu()
 
 	);
 	$item['olms/books_by_member'] = array(
-		'title' => 'Borrowed Books by members'
+		'title' => 'Borrowed Books by members',
+		'page callback' => 'drupal_get_form',
+		'description' => 'Reccive return Books',
+		'page arguments' => array('sort_by_member'),
+		'access callback' => TRUE
 		);
+
 return $item;
 
 }
@@ -204,7 +209,7 @@ function omls_custom_select_users()
 			$role_ids=array_keys($ue->roles);
 			if($role_ids[1] == 4)
 			{
-				$user[$i] = $name;
+				$user[$uid] = $name;
 				//$user= array($uid => $name);
 			}
 		}
@@ -298,7 +303,35 @@ function olms_custom_menu_alter(&$items) {
 
 return $items;
 }
-
+function sort_by_member($form,&$form_state)
+{
+	$menbers = omls_custom_select_users();
+	$form['select_member'] = array(
+		'#type' => 'select',
+		'#title' => 'Select Member',
+		'#options' => $menbers
+		);
+	$form['submit_button'] = array(
+		'#type' => 'submit',
+		'#value' => 'Sort'
+		);
+	Return $form;
+}
+function sort_by_member_submit($form,&$form_state)
+{
+	$uid = $form_state['values']['select_member'];
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type','node')
+	->entityCondition('bundle','book_issue')
+	->propertyCondition('status',1)
+	->fieldCondition('field_member','target_id',$uid,'=')
+	;
+	$result = $query->execute();
+	$book_issue_nids = array_keys($result['node']);
+	$book_issue_entites = entity_load('node',$book_issue_nids);
+	dpm($book_issue_entites);
+	dpm($form_state);
+}
 function olms_custom_node_insert($node)
 {
 //drupal_set_message($node->nid);

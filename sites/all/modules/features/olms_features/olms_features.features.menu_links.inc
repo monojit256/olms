@@ -187,6 +187,46 @@ function olms_features_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+  // Exported menu link: menu-master-menu_book-quantity-:olms/increse_book_quantity
+  $menu_links['menu-master-menu_book-quantity-:olms/increse_book_quantity'] = array(
+    'menu_name' => 'menu-master-menu',
+    'link_path' => 'olms/increse_book_quantity',
+    'router_path' => 'olms/increse_book_quantity',
+    'link_title' => 'Book Quantity (+)',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-master-menu_book-quantity-:olms/increse_book_quantity',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-master-menu_borrowed-books-by-members:olms/books_by_member
+  $menu_links['menu-master-menu_borrowed-books-by-members:olms/books_by_member'] = array(
+    'menu_name' => 'menu-master-menu',
+    'link_path' => 'olms/books_by_member',
+    'router_path' => 'olms/books_by_member',
+    'link_title' => 'Borrowed Books By Members',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-master-menu_borrowed-books-by-members:olms/books_by_member',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
   // Exported menu link: menu-master-menu_maintain-books:book-display
   $menu_links['menu-master-menu_maintain-books:book-display'] = array(
     'menu_name' => 'menu-master-menu',
@@ -218,6 +258,26 @@ function olms_features_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-master-menu_maintain-category:category-display',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-master-menu_return-books-custom:olms/return_book
+  $menu_links['menu-master-menu_return-books-custom:olms/return_book'] = array(
+    'menu_name' => 'menu-master-menu',
+    'link_path' => 'olms/return_book',
+    'router_path' => 'olms/return_book',
+    'link_title' => 'Return Books Custom',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-master-menu_return-books-custom:olms/return_book',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -306,8 +366,10 @@ function olms_features_menu_default_menu_links() {
   t('Book Inventory');
   t('Book Master');
   t('Book Quanity (-)');
+  t('Book Quantity (+)');
   t('Book Return');
   t('Book Transaction');
+  t('Borrowed Books By Members');
   t('Home');
   t('Issue Books');
   t('Issued Books');
@@ -315,6 +377,7 @@ function olms_features_menu_default_menu_links() {
   t('Maintain Category');
   t('My Account');
   t('Pending Book Details');
+  t('Return Books Custom');
 
 
   return $menu_links;
