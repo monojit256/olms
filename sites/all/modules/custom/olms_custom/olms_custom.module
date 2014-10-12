@@ -66,15 +66,15 @@ dpm($nod1);
 
 function olms_custom_menu()
 {
-$item=array();
-$item['olms/increse_book_quantity']=array(
-'title' => 'Book Quantity(+)',
-'description' => 'Book Quantity Increse',
-'page callback' => 'drupal_get_form',
-'page arguments' => array('increse_quantity'),
-'access callback' => TRUE
-);
-$item['olms/return_book']=array(
+	$item=array();
+	$item['olms/increse_book_quantity']=array(
+	'title' => 'Book Quantity(+)',
+	'description' => 'Book Quantity Increse',
+	'page callback' => 'drupal_get_form',
+	'page arguments' => array('increse_quantity'),
+	'access callback' => TRUE
+	);
+	$item['olms/return_book']=array(
 	'title' => 'Return Books',
 	'description' => 'Reccive return Books',
 	'page callback' => 'drupal_get_form',
@@ -82,79 +82,101 @@ $item['olms/return_book']=array(
 	'access callback' => TRUE
 
 	);
+	$item['olms/books_by_member'] = array(
+		'title' => 'Borrowed Books by members'
+		);
 return $item;
 
 }
 function increse_quantity($form,&$form_state)
 {
-//dpm($form);
-$form['book_name']=array(
-'#type' => 'textfield',
-'#title' => 'Enter Book Name',
-'#required' => TRUE
-);
-$form['book_quantity']=array(
-'#type' => 'textfield',
-'#title' => 'Enter book Qunatity',
-'#required' => TRUE
-);
-$form['submit_button'] = array(
-'#type' => 'submit',
-'#value' => t('Click Here!')
-);
-//dpm($form);
-return $form;
+	//dpm($form);
+	$form['book_name']=array(
+	'#type' => 'textfield',
+	'#title' => 'Enter Book Name',
+	'#required' => TRUE
+	);
+	$form['book_quantity']=array(
+	'#type' => 'textfield',
+	'#title' => 'Enter book Qunatity',
+	'#required' => TRUE
+	);
+	$form['submit_button'] = array(
+	'#type' => 'submit',
+	'#value' => t('Click Here!')
+	);
+	//dpm($form);
+	return $form;
 
 }
 function increse_quantity_submit($form, &$form_state) {
 //drupal_set_message('sdfsdfsd');
 
-$book_name = $form_state['values']['book_name'];
-$book_quantity = $form_state['values']['book_quantity'];
-$query = new EntityFieldQuery();
+	$book_name = $form_state['values']['book_name'];
+	$book_quantity = $form_state['values']['book_quantity'];
+	$query = new EntityFieldQuery();
 
-$query->entityCondition('entity_type', 'node')
-->entityCondition('bundle', 'book')
-->propertyCondition('status', 1)
-->propertyCondition('title', $book_name);
+	$query->entityCondition('entity_type', 'node')
+	->entityCondition('bundle', 'book')
+	->propertyCondition('status', 1)
+	->propertyCondition('title', $book_name);
 
-$result = $query->execute();
-//dpm($result);
+	$result = $query->execute();
+	//dpm($result);
 
-if (isset($result['node'])) {
-$book_nids = array_keys($result['node']);
-$book_entities = entity_load('node', $book_nids);
-//dpm($book_nids);
-//dpm($book_entities);
-$book_node = array_shift($book_entities);
-//dpm($book_node);
-//drupal_set_message($news_items);
-//$book_old_quan=$book_item[$book_nid[0]]->field_no_of_books['und'][0]['value'];
-//$total_quntity=$book_old_quan + $book_quantity;
-$old_qty = $book_node->field_no_of_books['und'][0]['value'];
-$total_quntity=$old_qty + $book_quantity;
-$book_node->field_no_of_books['und'][0]['value']=$total_quntity;
-entity_save('node', $book_node);
-//drupal_set_message($old_qty);
-///dpm($total_quntity);*/
-}
+	if (isset($result['node'])) {
+		$book_nids = array_keys($result['node']);
+		$book_entities = entity_load('node', $book_nids);
+		//dpm($book_nids);
+		//dpm($book_entities);
+		$book_node = array_shift($book_entities);
+		//dpm($book_node);
+		//drupal_set_message($news_items);
+		//$book_old_quan=$book_item[$book_nid[0]]->field_no_of_books['und'][0]['value'];
+		//$total_quntity=$book_old_quan + $book_quantity;
+		$old_qty = $book_node->field_no_of_books['und'][0]['value'];
+		$total_quntity=$old_qty + $book_quantity;
+		$book_node->field_no_of_books['und'][0]['value']=$total_quntity;
+		entity_save('node', $book_node);
+		//drupal_set_message($old_qty);
+		///dpm($total_quntity);*/
+	}
 
 }
 function return_book($form,&$form_state)
 {
-	$form['book_name']=array(
+
+	$books = olms_custom_book_select();
+	$user = omls_custom_select_users();
+	$date = '2008-12-31 00:00:00';
+	$format = 'Y-m-d';
+	/*$form['book_name']=array(
 			'#type' => 'textfield',
 			'#required' => TRUE,
 			'#title' => 'Enter book Name'
-		);
-	$form['borrower_name']=array(
+		);*/
+	$form['book_name'] = array(
+       '#type' => 'select',
+       '#title' => t('Selected'),
+       '#options' => $books,
+   );
+	/*$form['borrower_name']=array(
 			'#type' => 'textfield',
 			'#title' => 'Enter Borrower Name',
 			'#required' => TRUE
-		);
+		);*/
+	 $form['borrower_name'] = array(
+       '#type' => 'select',
+       '#title' => t('Selected'),
+       '#options' => $user,
+       
+       '#description' => t('Set this to <em>Yes</em> if you would like this category to be selected by default.'),
+   );
 	$form['return_date']=array(
-			'#type' => 'date',
+			'#type' => 'date_popup',
 			'#title' => 'Enter Return Date',
+			'#default_value' => $date,
+     		'#date_format' => $format,
 			'#required' => TRUE
 		);
 	$form['submit_button']=array(
@@ -162,6 +184,56 @@ function return_book($form,&$form_state)
 			'#value' => t('Return')
 		);
 	return $form;
+}
+function omls_custom_select_users()
+{
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type','user')
+	;
+	$result = $query->execute();
+	$user_ids = array_keys($result['user']);
+	$user_entities = entity_load('user',$user_ids);
+	$users;
+	$i=0;
+	foreach ($user_entities as $ue) {
+		$uid = $ue->uid;
+		$name = $ue->name;
+		//$user[$i]=array($uid => $name);
+		if($name != "")
+		{
+			$role_ids=array_keys($ue->roles);
+			if($role_ids[1] == 4)
+			{
+				$user[$i] = $name;
+				//$user= array($uid => $name);
+			}
+		}
+		$i++;
+		//dpm($ue);
+		//dpm($ue->roles);
+	}
+	//dpm($user_entities);
+	//dpm($user); 
+	Return $user;
+}
+function olms_custom_book_select()
+{
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type','node')
+	->entityCondition('bundle','book')
+	->propertyCondition('status',1)
+	;
+	$result = $query->execute();
+	$book_nids = array_keys($result['node']);
+	$book_entities = entity_load('node',$book_nids);
+	$i=0;
+	foreach ($book_entities as $be) {
+		$books[$i] = $be->title;
+		$i++;
+		//dpm($books);
+	}
+	//dpm($book_entities);
+	Return $books;
 }
 function return_book_submit($form,&$form_state)
 {
