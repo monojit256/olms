@@ -41,6 +41,7 @@ function olms_features_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'main-menu_book-master:book-master',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -48,26 +49,6 @@ function olms_features_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -49,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_book-return:issued-books
-  $menu_links['main-menu_book-return:issued-books'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'issued-books',
-    'router_path' => 'issued-books',
-    'link_title' => 'Book Return',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_book-return:issued-books',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: main-menu_home:<front>
@@ -98,6 +79,7 @@ function olms_features_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'main-menu_issue-books:node/add/book-issue',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -105,26 +87,6 @@ function olms_features_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -47,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_my-account:my-account
-  $menu_links['main-menu_my-account:my-account'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'my-account',
-    'router_path' => 'my-account',
-    'link_title' => 'My Account',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_my-account:my-account',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
     'customized' => 1,
   );
   // Exported menu link: menu-master-menu_add-new-book:node/add/book
@@ -367,7 +329,6 @@ function olms_features_menu_default_menu_links() {
   t('Book Master');
   t('Book Quanity (-)');
   t('Book Quantity (+)');
-  t('Book Return');
   t('Book Transaction');
   t('Borrowed Books By Members');
   t('Home');
@@ -375,7 +336,6 @@ function olms_features_menu_default_menu_links() {
   t('Issued Books');
   t('Maintain Books');
   t('Maintain Category');
-  t('My Account');
   t('Pending Book Details');
   t('Return Books Custom');
 

@@ -77,7 +77,7 @@ $item['olms/increse_book_quantity']=array(
 $item['olms/return_book']=array(
 'title' => 'Return Books',
 'description' => 'Reccive return Books',
-'page callback' => 'drupal_get_form',
+'page callback' => 'user_access',
 'page arguments' => array('return_book'),
 'access callback' => TRUE
 
@@ -89,9 +89,66 @@ $item['olms/books_by_member'] = array(
 'page arguments' => array('sort_by_member'),
 'access callback' => TRUE
 );
+$item['reccive_data'] = array(
+'page callback' => 'test_ajaxCallHandler',
+'page arguments' => array('sort_by_member'),
+'access callback' => TRUE,
+'type' => MENU_CALLBACK
+);
 
 return $item;
 
+}
+function test_ajaxCallHandler()
+{
+	//echo "The Is:- ".$_GET['id'];
+	$uid = $_GET['id'];
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type','node')
+	->entityCondition('bundle','book_issue')
+	->propertyCondition('status',1)
+	->fieldCondition('field_member','target_id',$uid,'=')
+	;
+	$result = $query->execute();
+	$book_issue_nids = array_keys($result['node']);
+	$book_issue_entites = entity_load('node',$book_issue_nids);
+
+
+	?>
+			<table class="users">
+			 <thead>
+		    <tr>
+		      <th class="row-1 row-ID">BOOK NAME</th>
+		      <th class="row-2 row-name">ISSUE DATE</th>
+		     <!-- <th class="row-3 row-job">Job</th>
+		      <th class="row-4 row-email">Email<th>!-->
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	  
+ 	<?php
+ 		foreach ($book_issue_entites as $be) {
+ 		
+ 		$book_entity = entity_load('node',array($be->field_book_name['und'][0]['target_id']));
+ 		$eb = array_shift($book_entity);
+ 		//dpm($book_entity);
+ 		if($be->field_return_date == NULL)
+ 		{
+
+ 	?>
+		    <tr>
+		      <td><?php echo $eb->title;  ?></td>
+		      <td><?php echo $be->field_issue_date['und'][0]['value']; ?></td>
+		      <!--<td>Robotin'</td>
+		      <td>need@input.com</td>!-->
+		    </tr>
+	<?php
+		}
+		}
+	?>
+		  </tbody>
+		</table>
+	<?php
 }
 function increse_quantity($form,&$form_state)
 {
@@ -181,7 +238,9 @@ $form['submit_button']=array(
 '#type' => 'submit',
 '#value' => t('Return')
 );
+
 return $form;
+
 }
 
 function omls_custom_select_users()
@@ -239,6 +298,9 @@ return $books;
 function return_book_submit($form,&$form_state)
 {
 ///dpm($form_state);
+	//dpm(drupal_get_path('module/custom','olms_custom'));
+	
+	//drupal_set_message(drupal_get_path('modules/custom','olms_custom'));
 $book_name=$form_state['values']['book_name'];
 dpm($book_name);
 $borrower_name=$form_state['values']['borrower_name'];
@@ -290,7 +352,7 @@ foreach($book_issue_entites as $en)
 //$book_issue_entites[$book_issue_ids[0]]->field_return_date['und']['0']['value'] = $full_date;//assign a new value to field_return_date (field)
 //dpm($book_issue_entites);
 //entity_save('node',$book_issue_entites[$book_issue_ids[0]]);//here we save the modified book_issued entity
-entity_save('node',$en);
+//entity_save('node',$en);
 //dpm($book_issue_entites);
 
 
@@ -304,7 +366,7 @@ $new_quan=$book_entities[$node_ids[0]]->field_no_of_books['und'][0]['value'] + 1
 $book_entities[$node_ids[0]]->field_no_of_books['und'][0]['value']=$new_quan;
 // here we insert new quantity into field_no_of_books
 
-entity_save('node',$book_entities[$node_ids[0]]);//here we save the modified book entity
+//entity_save('node',$book_entities[$node_ids[0]]);//here we save the modified book entity
 //dpm($book_entities);
 }
 
@@ -328,6 +390,9 @@ $form['submit_button'] = array(
 '#type' => 'submit',
 '#value' => 'Sort'
 );
+drupal_add_js("http://localhost/olms/sites/all/modules/custom/olms_custom/custom_java.js");
+drupal_add_css("http://localhost/olms/sites/all/modules/custom/olms_custom/table.css");
+$form['#suffix'] = '<input type="button" id="testbutton" value="testjs" /><br /><div id="testdiv"></div> ';
 return $form;
 }
 function sort_by_member_submit($form,&$form_state)
@@ -342,8 +407,14 @@ $query->entityCondition('entity_type','node')
 $result = $query->execute();
 $book_issue_nids = array_keys($result['node']);
 $book_issue_entites = entity_load('node',$book_issue_nids);
-dpm($book_issue_entites);
-dpm($form_state);
+foreach ($book_issue_entites as $be) {
+ 		
+ 		$book_entity = entity_load('node',array($be->field_book_name['und'][0]['target_id']));
+ 		$eb = array_shift($book_entity);
+ 		dpm($eb);
+//dpm($book_issue_entites);
+//dpm($form_state);
+ 	}
 }
 function olms_custom_node_insert($node)
 {
