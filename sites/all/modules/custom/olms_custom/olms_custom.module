@@ -392,7 +392,7 @@ $form['submit_button'] = array(
 );
 drupal_add_js("http://localhost/olms/sites/all/modules/custom/olms_custom/custom_java.js");
 drupal_add_css("http://localhost/olms/sites/all/modules/custom/olms_custom/table.css");
-$form['#suffix'] = '<input type="button" id="testbutton" value="testjs" /><br /><div id="testdiv"></div> ';
+$form['#suffix'] = '<input type="button" id="testbutton" value="testjs" /><input type="button" id="cprint" value="print" /><br /><div id="testdiv"></div> ';
 return $form;
 }
 function sort_by_member_submit($form,&$form_state)
@@ -415,6 +415,35 @@ foreach ($book_issue_entites as $be) {
 //dpm($book_issue_entites);
 //dpm($form_state);
  	}
+}
+function olms_custom_boot()
+{
+	global $base_url;
+	global $page;
+	$full_url = $base_url ."/". "book-display";
+	$c_path = $_GET['q'];
+	$check_url = $base_url . "/" . $c_path;
+	//drupal_set_message($check_url);
+	//drupal_set_message($full_url);
+	//drupal_add_js("http://localhost/olms/sites/all/modules/custom/olms_custom/custom_java.js");
+	if($check_url == $full_url)
+	{
+		echo "<script type='text/javascript' src='http://localhost/olms/sites/all/modules/custom/olms_custom/custom_java.js'></script>";
+		//drupal_add_js("http://localhost/olms/sites/all/modules/custom/olms_custom/custom_java.js");
+		drupal_set_message('<input type="button" id="vprint" value="Print" onclick="test()" />');
+
+		?>
+
+		<script>
+			jQuery(document).ready(function(){
+				//jQuery("#content").append("<input type='button' id='vprint1' value='Print' />");
+				//jQuery("#vprint").click(function(){
+				//alert("asdasS");
+				//});
+			});
+		</script>
+		<?php
+	}
 }
 function olms_custom_node_insert($node)
 {

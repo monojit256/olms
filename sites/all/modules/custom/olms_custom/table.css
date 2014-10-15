@@ -1,3 +1,7 @@
+body
+{
+  /*background-color:#F8E6B0;*/
+}
 .users {
   table-layout: fixed;
   width: 100%;
@@ -12,6 +16,7 @@
 /* Column widths are based on these cells */
 .row-ID {
   width: 10%;
+
 }
 .row-name {
   width: 40%;
@@ -21,4 +26,10 @@
 }
 .row-email {
   width: 20%;
+}
+@media print {
+  body
+  {
+    background-color: red;
+  }
 }
