@@ -1,4 +1,5 @@
 name = OLMS CUSTOM		
 description = Custome Olms Module For Some customiztion 
 package = Hide Date Field
+files[] = olms_custom.admin.inc
 core = 7.x

@@ -1,0 +1,51 @@
+<?php
+function olms_custom_schema()
+{
+$schema['olms_custom_test_schema'] = array(
+    'description' => t('A special cache used to store objects that are being edited; it serves to save state in an ordinarily stateless environment.'),
+    'fields' => array(
+     /* 'sid' => array(
+        'type' => 'varchar',
+        'length' => '64',
+        'not null' => TRUE,
+        'description' => 'The session ID this cache object belongs to.',
+      ),*/
+        'name' => array(
+          'type' => 'varchar',
+          'length' => '60',
+      ),
+        'address' => array(
+          'type' => 'varchar',
+          'length' => '45'
+      ),
+        'id' => array(
+          'type' => 'serial',
+          'not null' => TRUE,
+      ),
+    ),
+    /*'indexes' => array('id' => array('id')),*/
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+
+function olms_custom_ctable()
+{
+  $schema = olms_custom_schema();
+  db_create_table('olms_custom_test_schema', $schema['olms_custom_test_schema']);
+}
+function olms_custom_install() {
+// Check to see if annotation field exists.
+//echo "<script>alert('testing');</script>";
+$field = field_info_field('olms');
+// if the annotation field does not exist then create it
+if (empty($field)) {
+$field = array(
+'field_name' => 'olms',
+'type' => 'text_with_summary',
+'entity_types' => array('node'),
+'translatable' => TRUE,
+);
+$field = field_create_field($field);
+}
+}

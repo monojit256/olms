@@ -10,47 +10,6 @@
 function olms_features_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_book-display:book-display
-  $menu_links['main-menu_book-display:book-display'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'book-display',
-    'router_path' => 'book-display',
-    'link_title' => 'Book Display',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_book-display:book-display',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_book-master:book-master
-  $menu_links['main-menu_book-master:book-master'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'book-master',
-    'router_path' => 'book-master',
-    'link_title' => 'Book Master',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_book-master:book-master',
-      'alter' => TRUE,
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-  );
   // Exported menu link: main-menu_home:<front>
   $menu_links['main-menu_home:<front>'] = array(
     'menu_name' => 'main-menu',
@@ -59,6 +18,7 @@ function olms_features_menu_default_menu_links() {
     'link_title' => 'Home',
     'options' => array(
       'identifier' => 'main-menu_home:<front>',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -100,6 +60,7 @@ function olms_features_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-master-menu_add-new-book:node/add/book',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -120,6 +81,7 @@ function olms_features_menu_default_menu_links() {
         'title' => '',
       ),
       'identifier' => 'menu-master-menu_add-new-category:admin/structure/taxonomy/category/add',
+      'alter' => TRUE,
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -128,216 +90,13 @@ function olms_features_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
-  );
-  // Exported menu link: menu-master-menu_book-quanity--:decrease-book-quantity
-  $menu_links['menu-master-menu_book-quanity--:decrease-book-quantity'] = array(
-    'menu_name' => 'menu-master-menu',
-    'link_path' => 'decrease-book-quantity',
-    'router_path' => 'decrease-book-quantity',
-    'link_title' => 'Book Quanity (-)',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-master-menu_book-quanity--:decrease-book-quantity',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-master-menu_book-quantity-:olms/increse_book_quantity
-  $menu_links['menu-master-menu_book-quantity-:olms/increse_book_quantity'] = array(
-    'menu_name' => 'menu-master-menu',
-    'link_path' => 'olms/increse_book_quantity',
-    'router_path' => 'olms/increse_book_quantity',
-    'link_title' => 'Book Quantity (+)',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-master-menu_book-quantity-:olms/increse_book_quantity',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-master-menu_borrowed-books-by-members:olms/books_by_member
-  $menu_links['menu-master-menu_borrowed-books-by-members:olms/books_by_member'] = array(
-    'menu_name' => 'menu-master-menu',
-    'link_path' => 'olms/books_by_member',
-    'router_path' => 'olms/books_by_member',
-    'link_title' => 'Borrowed Books By Members',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-master-menu_borrowed-books-by-members:olms/books_by_member',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-master-menu_maintain-books:book-display
-  $menu_links['menu-master-menu_maintain-books:book-display'] = array(
-    'menu_name' => 'menu-master-menu',
-    'link_path' => 'book-display',
-    'router_path' => 'book-display',
-    'link_title' => 'Maintain Books',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-master-menu_maintain-books:book-display',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-master-menu_maintain-category:category-display
-  $menu_links['menu-master-menu_maintain-category:category-display'] = array(
-    'menu_name' => 'menu-master-menu',
-    'link_path' => 'category-display',
-    'router_path' => 'category-display',
-    'link_title' => 'Maintain Category',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-master-menu_maintain-category:category-display',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-master-menu_return-books-custom:olms/return_book
-  $menu_links['menu-master-menu_return-books-custom:olms/return_book'] = array(
-    'menu_name' => 'menu-master-menu',
-    'link_path' => 'olms/return_book',
-    'router_path' => 'olms/return_book',
-    'link_title' => 'Return Books Custom',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-master-menu_return-books-custom:olms/return_book',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-reports_book-inventory:book-inventory
-  $menu_links['menu-reports_book-inventory:book-inventory'] = array(
-    'menu_name' => 'menu-reports',
-    'link_path' => 'book-inventory',
-    'router_path' => 'book-inventory',
-    'link_title' => 'Book Inventory',
-    'options' => array(
-      'identifier' => 'menu-reports_book-inventory:book-inventory',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-  );
-  // Exported menu link: menu-reports_book-transaction:book-transaction
-  $menu_links['menu-reports_book-transaction:book-transaction'] = array(
-    'menu_name' => 'menu-reports',
-    'link_path' => 'book-transaction',
-    'router_path' => 'book-transaction',
-    'link_title' => 'Book Transaction',
-    'options' => array(
-      'identifier' => 'menu-reports_book-transaction:book-transaction',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-  );
-  // Exported menu link: menu-reports_issued-books:issued-books
-  $menu_links['menu-reports_issued-books:issued-books'] = array(
-    'menu_name' => 'menu-reports',
-    'link_path' => 'issued-books',
-    'router_path' => 'issued-books',
-    'link_title' => 'Issued Books',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-reports_issued-books:issued-books',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-reports_pending-book-details:pending-book-details
-  $menu_links['menu-reports_pending-book-details:pending-book-details'] = array(
-    'menu_name' => 'menu-reports',
-    'link_path' => 'pending-book-details',
-    'router_path' => 'pending-book-details',
-    'link_title' => 'Pending Book Details',
-    'options' => array(
-      'identifier' => 'menu-reports_pending-book-details:pending-book-details',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
   );
   // Translatables
   // Included for use with string extractors like potx.
   t('Add New Book');
   t('Add New Category');
-  t('Book Display');
-  t('Book Inventory');
-  t('Book Master');
-  t('Book Quanity (-)');
-  t('Book Quantity (+)');
-  t('Book Transaction');
-  t('Borrowed Books By Members');
   t('Home');
   t('Issue Books');
-  t('Issued Books');
-  t('Maintain Books');
-  t('Maintain Category');
-  t('Pending Book Details');
-  t('Return Books Custom');
 
 
   return $menu_links;

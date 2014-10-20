@@ -95,10 +95,32 @@ $item['reccive_data'] = array(
 'access callback' => TRUE,
 'type' => MENU_CALLBACK
 );
+/**--------------------------Menu in admin-------------------------------**/
+$item['admin/config/olms_custom'] = array(
+'title' => 'Node annotation',
+'description' => 'Adjust node annotation options.',
+'position' => 'right',
+'weight' => -5,
+'page callback' => 'system_admin_menu_block_page',
+'access arguments' => array('administer site configuration'),
+'file' => 'system.admin.inc',
+'file path' => drupal_get_path('module', 'system'),
+);
+$item['admin/config/olms_custom/settings'] = array(
+'title' => 'Annotation settings',
+'description' => 'Change how annotations behave.',
+'page callback' => 'drupal_get_form',
+'page arguments' => array('olms_custom_admin_settings'),
+'access arguments' => array('administer site configuration'),
+'type' => MENU_NORMAL_ITEM,
+'file' => 'olms_custom.admin.inc',
+);
 
 return $item;
 
 }
+/*----------------------------Function of Admin Menu-----------------------------*/
+
 function test_ajaxCallHandler()
 {
 	//echo "The Is:- ".$_GET['id'];

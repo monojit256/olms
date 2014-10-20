@@ -122,31 +122,5 @@ function olms_features_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['views-category_of_books-block'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'category_of_books-block',
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => 'book-display',
-    'roles' => array(),
-    'themes' => array(
-      'bartik' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'bartik',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 1,
-  );
-
   return $export;
 }
